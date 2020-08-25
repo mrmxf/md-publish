@@ -5,13 +5,21 @@ Tools, templates & boilerplate for publishing technical documents from markdown 
 using the
 [Pandoc] library.
 
+Status: **Work In Progress**
+
 ## installation
 
-Make a folder for your documents project e.g. `/my-standard`
+Make a folder for your documents project e.g. `/my-document`. Alternativly, you can
+get started with a sample documents project that I use to test all the scripts.
 
-Now shallow clone this repo into your document folder into a subfolder. I
-usually call the folder `x-r` (external resources) so that it's at the bottom
-of the folder list.
+```sh
+git clone --depth=1 https://github.com/mrmxf/md-publish-samples
+```
+
+Now `cd` into your project folder e.g. `cd /my-document` or
+`cd ./md-publish-samples` and shallow clone this repo into a subfolder. I
+call the folder `x-r` (external resources) so that it's at the bottom
+of the folder list and nice and short when typing.
 
 ```sh
 git clone --depth=1 https://github.com/mrmxf/md-publish x-r
@@ -19,21 +27,16 @@ git clone --depth=1 https://github.com/mrmxf/md-publish x-r
 
 ## usage
 
-Get started with the sample documents project that I use to test all the scripts.
-
-```sh
-git clone --depth=1 https://github.com/mrmxf/md-publish-samples
-```
-
-Once you have cloned the sample folder, perform the `md-publish` installation above.
-Note that the sample documents project has a `.gitignore` file to separate the tools from the docs.
+Once you have your document project, you might want to make a file called `.gitignore`
+that tells git not to store temp files and the like. My default `.gitignore` is here:
+``
 
 You can now explore the source structures for the documents and you can build them by
 starting a shell in your document folder and using the command:
 
-* _Linux:_ `bash x-r/bin/makedocs.sh`
-* _Mac:_ `zsh x-r/bin/makedocs.sh`
-* _Windows:_ `x-r/bin/makedocs.bat`
+* _Linux:_ `bash x-r/makedocs.sh`
+* _Mac:_ `zsh x-r/makedocs.sh`
+* _Windows:_ `x-r/makedocs.bat`
 
 ## recommended folder structure
 
@@ -49,7 +52,9 @@ browser as they do in the published document.
 |  |  ├─ 020-intro.md             2nd markdown file in your document
 |  |  ├─ 030-body.md              3rd markdown file in your document
 |  |  ├─ a00-annex.md             an annex
-|  |  └─ ymldg-defaults.yml       pandoc control file - must start with ymldg to be automated
+|  |  ├─ zmdpub-doc1.yml          pandoc control file - see CONFIG for automation
+|  |  ├─ zmdpub-doc1.xtra         a list of extra assets to be processed during document build
+|  |  └─ zmetadata.json           metadata for automated substitution - dates, versions etc
 │  ├─ src-doc2/               all the sources for doc2
 │  ├─ src-doc3/               all the sources for doc3
 │  ├─ x-r/                    the tools from this repo
@@ -73,3 +78,28 @@ create .docx .pdf .html and .epub conten from the same sources.
 
 The defaul templates are synced with the [pandoc-templates] repo. The
 boilerplate and tools are custom for the organisations in which I work.
+
+### Build requirements
+
+To build new output documents you will need to install a few bits of open source softwrae:
+
+* [Pandoc] is the core engine for building asll the outputs. It is a command line application. Fire up a terminal (Win/Mac/Linux) and type `pandoc --version` to see if you have it installed.
+* One of the following for making PDF output:
+  * [Protex] is needed for generating a Latex intermediate for creating PDFs on Windows
+  * [Mactex] is needed for making PDFs on a Mac
+* [Python] is needed for metadata substitution used in SMPTE templates
+* [pip] is needed to load the metadata substitution engine once [Python] is installed
+
+There are scripts for Mac, Windows and Linux in the `/bin` folder. These should be run from the root folder e.g.
+
+* **Make output documents**
+  * Windows: `bin\makedocs.win.bat`
+  * Mac: `bin/makedocs.mac.sh`
+  * Linux: `bin/makedocs.lx.sh`
+* **Install Filters**
+  * Windows: `bin\install-filters.bat` (not working yet)
+  * Linux: `bin\install-filters.sh`
+  * ... to install the following:
+    * [mustache](https://github.com/michaelstepner/pandoc-mustache) for pandoc
+
+More scripts will follow as it becomes prettier and other outputs are generated

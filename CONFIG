@@ -3,5 +3,5 @@ MD_DOCX_PDF_VERBOSE=TURE
 MD_DOCX_PDF_TITLE=md-publish by Mr MXF (in CONFIG)
 MD_DOCX_PDF_SCRIPT_VERSION=0.2 (in CONFIG)
 OUTPUT_FOLDER=docs (in CONFIG)
-FILE_GLOB=*/ymldg-*.yml
-FILE_GLOB_WIN=ymldg-*.yml
+FILE_GLOB=*/zmdpub-*.yml
+FILE_GLOB_WIN=zmdpub-*.yml
