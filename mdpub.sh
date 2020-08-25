@@ -3,7 +3,7 @@
 
 # _SETTINGS contains default settings. CONFIG folder is user overrides
 SCRIPT_FOLDER="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 ; pwd )"
-CONFIG_FOLDER="$( pwd )"
+CONFIG_PATH="$( pwd )/mdpub-config"
 
 # set up some colors to make the output pretty
 Coff="\e[0m"
@@ -20,12 +20,12 @@ MD_DOCX_PDF_TITLE="md-publish by mrmxf"
 
 #pull in the default settings & optional config
 source $SCRIPT_FOLDER/_SETTINGS >/dev/null 2>&1
-source ./CONFIG >/dev/null 2>&1
+source $CONFIG_PATH >/dev/null 2>&1
 
 if [ -n $MD_DOCX_PDF_VERBOSE ] ; then
   echo -e "${Ctxt}                >>>$Cheading $MD_DOCX_PDF_TITLE $Coff"
   echo -e "${Ctxt}load _SETTINGS from$Cfile $SCRIPT_FOLDER/SETTINGS $Coff"
-  echo -e "${Ctxt}load    CONFIG from$Cfile $CONFIG_FOLDER/CONFIG   $Coff"
+  echo -e "${Ctxt}load    CONFIG from$Cfile $CONFIG_PATH $Coff"
   echo -e "${Ctxt}     script version$Cinfo $MD_DOCX_PDF_SCRIPT_VERSION $Coff"
   echo -e "${Ctxt}      output folder$Cinfo $OUTPUT_FOLDER $Coff"
   echo -e "${Ctxt}      default files$Cinfo $FILE_GLOB $Coff"
@@ -35,7 +35,7 @@ fi
 for f in $FILE_GLOB
 do
   echo -e "${Cwarning}------------------->${Ctxt}defaults=$Cfile$f$Coff"
-  pandoc --lua-filter x-r/filter/smpte-st-numbering.lua --defaults=$f
+  pandoc --filter pandoc-mustache  --lua-filter x-r/filter/smpte-st-numbering.lua --defaults=$f
 done
 
 #version is used to identify the right files

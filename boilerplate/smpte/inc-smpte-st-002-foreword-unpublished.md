@@ -12,4 +12,4 @@ Warning
 
 _This document is an unpublished, confidential work under development and shall not be referred to as a SMPTE Standard, Recommended Practice, or Engineering Guideline. It is distributed for review and comment; distribution does not constitute publication. Recipients of this document are strongly encouraged to submit, with their comments, notification of any relevant patent rights of which they are aware and to provide supporting documentation._
 
-{{revision_topics_list}}.
+{{smpte.revision_topics_list}}

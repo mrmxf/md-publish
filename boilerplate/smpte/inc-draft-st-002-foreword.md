@@ -32,4 +32,4 @@ Unless otherwise specified, the order of precedence of the types of normative in
 If this is a revision, a topical list of changes [should/shall be included here]
 :::
 
-{{revision_topics_list}}
+{{smpte.revision_topics_list}}

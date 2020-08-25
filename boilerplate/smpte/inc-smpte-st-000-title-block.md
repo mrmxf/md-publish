@@ -1,11 +1,11 @@
-::: {custom-style=smpte-pandoc-doc-name-title}
+::: {custom-style=smpte-eng-doc-top}
 **SMPTE {{smpte.ref}}**
 :::
 
-::: {custom-style=smpte-pandoc-doc-type}
+::: {custom-style=smpte-eng-doc-type}
 {{smpte.type.long}}
 :::
 
-::: {custom-style=smpte-pandoc-doc-title}
+::: {custom-style=smpte-eng-doc-title}
 {{smpte.title}}
 :::

@@ -5,3 +5,6 @@ MD_DOCX_PDF_SCRIPT_VERSION=0.2
 OUTPUT_FOLDER=docs
 FILE_GLOB=*/zmdpub-*.yml
 FILE_GLOB_WIN=zmdpub-*.yml
+
+
+CUSTOM_FILTER=""
