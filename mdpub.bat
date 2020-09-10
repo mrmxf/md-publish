@@ -18,11 +18,11 @@ set   CC=%Ccmd%   & set   CU=%Curl%  & set   CT=%Ctxt%    & set    CI=%Cinfo%  &
 REM pull in the default settings & optional config
 for /f "delims=" %%x in (%SCRIPT_FOLDER%_SETTINGS) do (set %%x)
 
-if [%MD_DOCX_PDF_VERBOSE%] NEQ [] (
-  echo %Ctxt%                ^>^>^>%Cheading% %MD_DOCX_PDF_TITLE% %Coff%
+if [%MDPUB_VERBOSE%] NEQ [] (
+  echo %Ctxt%                ^>^>^>%Cheading% %MDPUB_TITLE% %Coff%
   echo %Ctxt%load _SETTINGS from%Cfile%%SCRIPT_FOLDER%_SETTINGS %Coff%
   echo %Ctxt%load    CONFIG from%Cfile%%CONFIG_FOLDER%\CONFIG   %Coff%
-  echo %Ctxt%     script version%Cinfo% %MD_DOCX_PDF_SCRIPT_VERSION% %Coff%
+  echo %Ctxt%     script version%Cinfo% %MDPUB_SCRIPT_VERSION% %Coff%
   echo %Ctxt%      output folder%Cinfo% %OUTPUT_FOLDER% %Coff%
   echo %Ctxt%      default files%Cinfo% %FILE_GLOB_WIN% %Coff%
 

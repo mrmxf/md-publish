@@ -1,7 +1,7 @@
 _help=Put a config file in the root of your project to change script behaviour
-MD_DOCX_PDF_VERBOSE=TURE
-MD_DOCX_PDF_TITLE=md-publish by Mr MXF (in CONFIG)
-MD_DOCX_PDF_SCRIPT_VERSION=0.2 (in CONFIG)
-OUTPUT_FOLDER=docs (in CONFIG)
-FILE_GLOB=*/zmdpub-*.yml
-FILE_GLOB_WIN=zmdpub-*.yml
+MDPUB_VERBOSE=TURE
+MDPUB_TITLE=md-publish by Mr MXF
+MDPUB_SCRIPT_VERSION=0.2
+OUTPUT_FOLDER=docs
+FILE_GLOB=*/mdpub-*.yml
+FILE_GLOB_WIN=mdpub-*.yml
