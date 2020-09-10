@@ -25,7 +25,7 @@ _help: Title Block for draft engineering documents. Do not delete the openxml se
 ```
 
 ::: {custom-style="Title"}
-{{smpte.title}
+{{smpte.title}}
 :::
 
 ::: {custom-style="Subtitle"}
@@ -53,13 +53,13 @@ This document is an unpublished, confidential work under development and shall n
 :::
 
 [Project Group: ]{custom-style="smpte-ch-boilerplate"}
-_{{smpte.group.name}_
+_{{smpte.group.name}}_
 
 [Project Technology Committee:]{custom-style="smpte-ch-boilerplate"}
 {{smpte.TC}}
 
 [Document type:]{custom-style="smpte-ch-boilerplate"}
-_{{smpte.type.short_
+_{{smpte.type.short}}_
 
 [Document state:]{custom-style="smpte-ch-boilerplate"}
 _{{smpte.state}}_
@@ -68,7 +68,7 @@ _{{smpte.state}}_
 _{{smpte.group.chair}}_
 
 [Document editor(s):]{custom-style="smpte-ch-boilerplate"}
-_{{smpte.group.editor}_
+_{{smpte.group.editor}}_
 
 [Document number:]{custom-style="smpte-ch-boilerplate"}
 _{{smpte.number}}_
