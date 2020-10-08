@@ -71,7 +71,7 @@ _{{smpte.group.chair}}_
 _{{smpte.group.editor}}_
 
 [Document number:]{custom-style="smpte-ch-boilerplate"}
-_{{smpte.number}}_
+_{{smpte.number}}-{{smpte.part}}_
 
 [Document title:]{custom-style="smpte-ch-boilerplate"}
 _{{smpte.title}}_

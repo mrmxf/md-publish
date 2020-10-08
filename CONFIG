@@ -1,7 +1,0 @@
-_help=Put a config file in the root of your project to change script behaviour
-MDPUB_VERBOSE=TURE
-MDPUB_TITLE=md-publish by Mr MXF
-MDPUB_SCRIPT_VERSION=0.2
-OUTPUT_FOLDER=docs
-FILE_GLOB=*/mdpub-*.yml
-FILE_GLOB_WIN=mdpub-*.yml

@@ -1,9 +1,11 @@
 # md-publish makedoc script - Linux
 # -------------------------------------------------------------------
 
-# _SETTINGS contains default settings. CONFIG folder is user overrides
+# _SETTINGS contains default settings. CONFIG folder is user overrides. create the current date as YYYY-MM-DD for convenience
+printf -v MDPUB_DATE '%(%Y-%m-%d)T' -1
 SCRIPT_FOLDER="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 ; pwd )"
-CONFIG_PATH="$( pwd )/mdpub-config"
+CONFIG_FILENAME=mdpub-CONFIG
+CONFIG_PATH="$( pwd )/$CONFIG_FILENAME"
 
 # set up some colors to make the output pretty
 Coff="\e[0m"
@@ -34,8 +36,40 @@ fi
 # iterate over all yml files in the root folder and run pandoc
 for f in $FILE_GLOB
 do
-  echo -e "${Cwarning}------------------->${Ctxt}defaults=$Cfile$f$Coff"
+  # reset the project config in case there is no config for this doc
+  source $CONFIG_PATH >/dev/null 2>&1
+  # locate the project cofig
+  DOC_FOLDER=$( dirname $f )
+  DOC_CONFIG_PATH="$DOC_FOLDER/$CONFIG_FILENAME"
+
+  echo -e "${Cwarning}------------------->${Ctxt}    defaults=$Cfile$f$Coff"
+
+  # if there is a document config the use it
+  if [ -f $DOC_CONFIG_PATH ] ; then
+    echo -e "${Cwarning}------------------->${Ctxt}mdpub-CONFIG=$Cfile$DOC_CONFIG_PATH$Coff"
+    source $DOC_CONFIG_PATH
+  fi
+
+  PRE_PROCESS_SCRIPT="$DOC_FOLDER/$PRE_PROCESS_SCRIPT"
+  # if there is a pre-process script then run it
+  if [ -f $PRE_PROCESS_SCRIPT ] ; then
+    EKO="${Cwarning}-->${Ctxt} pre-process${Cinfo}"
+    ERO="${Cerror}--> pre-process ERROR${Cinfo}"
+    echo -e "$EKO=$Cfile$PRE_PROCESS_SCRIPT$Coff"
+    source $PRE_PROCESS_SCRIPT
+  fi
+
+  echo -e "${Cwarning}-->${Ctxt}pandoc$Coff"
   pandoc --defaults=$f
+
+  POST_PROCESS_SCRIPT="$DOC_FOLDER/$POST_PROCESS_SCRIPT"
+  # if there is a post-process script then run it
+  if [ -f $POST_PROCESS_SCRIPT ] ; then
+    EKO="${Cwarning}-->${Ctxt} post-process${Cinfo}"
+    ERO="${Cerror}--> post-process ERROR${Cinfo}"
+    echo -e "$EKO=$Cfile$POST_PROCESS_SCRIPT$Coff"
+    source $POST_PROCESS_SCRIPT
+  fi
 done
 
 #version is used to identify the right files
