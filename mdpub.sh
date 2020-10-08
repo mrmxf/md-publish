@@ -50,25 +50,25 @@ do
     source $DOC_CONFIG_PATH
   fi
 
-  PRE_PROCESS_SCRIPT="$DOC_FOLDER/$PRE_PROCESS_SCRIPT"
+  RUN_SCRIPT="$DOC_FOLDER/$PRE_PROCESS_SCRIPT"
   # if there is a pre-process script then run it
-  if [ -f $PRE_PROCESS_SCRIPT ] ; then
+  if [ -f $RUN_SCRIPT ] ; then
     EKO="${Cwarning}-->${Ctxt} pre-process${Cinfo}"
     ERO="${Cerror}--> pre-process ERROR${Cinfo}"
-    echo -e "$EKO=$Cfile$PRE_PROCESS_SCRIPT$Coff"
-    source $PRE_PROCESS_SCRIPT
+    echo -e "$EKO=$Cfile$RUN_SCRIPT$Coff"
+    source $RUN_SCRIPT
   fi
 
   echo -e "${Cwarning}-->${Ctxt}pandoc$Coff"
   pandoc --defaults=$f
 
-  POST_PROCESS_SCRIPT="$DOC_FOLDER/$POST_PROCESS_SCRIPT"
+  RUN_SCRIPT="$DOC_FOLDER/$POST_PROCESS_SCRIPT"
   # if there is a post-process script then run it
-  if [ -f $POST_PROCESS_SCRIPT ] ; then
+  if [ -f $RUN_SCRIPT ] ; then
     EKO="${Cwarning}-->${Ctxt} post-process${Cinfo}"
     ERO="${Cerror}--> post-process ERROR${Cinfo}"
-    echo -e "$EKO=$Cfile$POST_PROCESS_SCRIPT$Coff"
-    source $POST_PROCESS_SCRIPT
+    echo -e "$EKO=$Cfile$RUN_SCRIPT$Coff"
+    source $RUN_SCRIPT
   fi
 done
 
