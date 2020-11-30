@@ -12,7 +12,7 @@ International Organization for Standardization (ISO) / International Electrotech
 
 **Warning**: Only copy-and-paste plain text from other documents; otherwise this style set may be corrupted.
 
-The `refdoc` for this document type is usually `x-r/refdocs/refdoc-smpte-eng.docx` unless you have used your own.
+The `refdoc` for this document type is usually `xr/refdocs/refdoc-smpte-eng.docx` unless you have used your own.
 There are samples of all the styles available.
 
 If you extend the document types with your own `refdoc`, the **YOU MUST**  make
