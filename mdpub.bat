@@ -31,5 +31,5 @@ if [%MDPUB_VERBOSE%] NEQ [] (
 rem iterate over all yml files in the root folder and run pandoc
 for /r  . %%f in (%FILE_GLOB_WIN%) do (
   echo %Cheading%-------------------^>%Ctxt%defaults=%FILE_GLOB_WIN% %Cfile% %f% %Coff%
-  pandoc --lua-filter x-r/filter/smpte-st-numbering.lua --defaults=%%f
+  pandoc --lua-filter xr/filter/smpte-st-numbering.lua --defaults=%%f
 )
