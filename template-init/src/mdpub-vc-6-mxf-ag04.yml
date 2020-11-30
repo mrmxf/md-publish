@@ -1,0 +1,89 @@
+# Title: imf-reg-api
+# Author: Bruce Devlin
+# Defaults: DOCX (smpte)
+
+# all file paths are relative to the root folder of the project
+# change this at your peril - the scripts might stop working
+
+
+metadata:
+  mustache:
+    - src/metadata/meta-types.xml.json
+    - src/metadata/meta-groups.xml.json
+    - src/metadata/meta-elements.xml.json
+    - src/metadata/meta-labels.xml.json
+    - src/metadata/VC-6-mxf-document-metadata.json
+    - src/metadata/meta-essence.xml.json
+
+from: markdown
+to: docx
+
+reference-doc: x-r/refdoc/refdoc-smpte-eng.docx
+
+output-file:  docs/pandoc-ag04-output.docx
+input-files:
+  - x-r/boilerplate/smpte/inc-draft-st-000-title-block.md
+  - x-r/boilerplate/smpte/inc-draft-st-002-foreword.md
+  - x-r/boilerplate/smpte/inc-draft-st-005-introduction.md
+
+  - src/005-introduction.md
+  - x-r/boilerplate/smpte/inc-draft-st-006-ipr-statement.md
+  - x-r/boilerplate/smpte/inc-draft-st-010-scope-heading.md
+
+  - src/010-scope.md
+  - x-r/boilerplate/smpte/inc-draft-st-020-normative-references-heading.md
+
+  - src/020-normative-references.md
+  - x-r/boilerplate/smpte/inc-draft-st-030-terms-and-definitions-heading.md
+
+  - src/030-terms-definitions.md
+  - src/040-MXF File Structure and Mapping.md
+  - src/050-Mapping-VC-6-bytestream.md
+  - src/060-klv-encoding.md
+  - src/070-labels.md
+  - src/080-essence-descriptor.md
+  - src/090-application-issues.md
+
+  - x-r/boilerplate/smpte/inc-draft-st-zz0-information-for-editors.md
+# paths to search for images
+resource-path: [".", "src", "x-r/boilerplate/smpte"]
+
+# filters are needed for this document
+# - pandoc-lustache    - substitutes metadata into {{mustaches}}
+# - smpte-st-numbering - smpte numbering logic (don't number introduction etc)
+filters:
+  - x-r/filter/pandoc-lustache.lua
+  - x-r/filter/smpte-st-numbering.lua
+
+#template: letter
+standalone: true
+self-contained: true
+
+# This variable is passed to filters
+variables:
+  organisation: SMPTE
+
+# ERROR, WARNING, or INFO
+verbosity: INFO
+#log-file: log.json
+
+#pdf-engine: pdflatex
+#pdf-engine-opts:
+#- "-shell-escape"
+# you may also use pdf-engine-opt: with a single option
+# pdf-engine-opt: "-shell-escape"
+
+table-of-contents: false
+toc-depth: 2
+#SMPTE numbering is done with a filter to follow ISO rules
+number-sections: false
+
+#reference-links: true
+# block, section, or document
+#reference-location: block
+#atx-headers: false
+
+fail-if-warnings: false
+dump-args: false
+ignore-args: false
+trace: false

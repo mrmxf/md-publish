@@ -1,0 +1,32 @@
+# Mr MXF's md-publish
+# ignore all files starting with tmp
+tmp*
+tmp-*
+tmp-*.*
+z-*
+z-*.*
+
+#ignore temporary word documents
+~*.*
+
+#ignore the external resources folder by default
+x-r/**
+xr/**
+
+# ignore any secrets in environment variables
+.env
+
+# ignore any node or lua or python cruft for speciality filters
+node_modules
+lua_modules
+__pycache__/
+*.py[cod]
+*$py.class
+pip-log.txt
+pip-delete-this-directory.txt
+
+#ignore any foreign repos
+.svn
+
+#ignore any logs
+**/logs
