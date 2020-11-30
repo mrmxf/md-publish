@@ -33,6 +33,13 @@ if [ -n $MDPUB_VERBOSE ] ; then
   echo -e "${Ctxt}      default files$Cinfo $FILE_GLOB $Coff"
 fi
 
+# handle the init command
+if [ "$1" == "init" ] ;  then
+  echo -e "${Ctxt}    copy init files$Cinfo $SCRIPT_FOLDER/template-init/ $Coff"
+  cp -r "$SCRIPT_FOLDER/template-init/" .
+  exit 0
+fi
+
 # iterate over all yml files in the root folder and run pandoc
 for f in $FILE_GLOB
 do
