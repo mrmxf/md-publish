@@ -20,6 +20,7 @@ source $CONFIG_PROJECT >/dev/null 2>&1
 source $TOOLS/_action-echo-configuration.sh
 
 # handle any actions
+if [ "$ACTION" == "help"   ] ;  then source $TOOLS/_action-help.sh ; fi
 if [ "$ACTION" == "init"   ] ;  then source $TOOLS/_action-init-project.sh ; fi
 if [ "$ACTION" == "update" ] ;  then source $TOOLS/_action-update-tools.sh ; fi
 

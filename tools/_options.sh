@@ -14,12 +14,17 @@ ACTION="build"
 #iterate over parameters & commands on the command line
 while [ $# -gt 0 ] ; do
   case "$1" in
-    -q|--quiet)
-      QUIET=1
+    -h|--help|help)
+      QUIET="quiet"
+      ACTION="help"
       shift
       ;;
     -i|--init|init)
       ACTION="init"
+      shift
+      ;;
+    -q|--quiet)
+      QUIET="quiet"
       shift
       ;;
     -u|--update|update)
