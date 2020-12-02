@@ -1,6 +1,19 @@
-# WARNING: this can't be undone!
+# check to see if we need to do an update
+
 URL=$(git config --get remote.origin.url)
-if [ -z $QUIET ]; then echo -e "${Cwarning}    Non-reversible!$Cinfo Update tools from ${Curl}$URL${Cinfo}?$Coff"; fi
+
+#fetch remote data and check status
+git fetch --quiet
+STATUS=$(git status -sb)
+NEED_UPDATE=""
+if [[ "$STATUS" == *"behind"* ]] ; then NEED_UPDATE="yes" ; fi
+
+if [[ -z "$NEED_UPDATE" ]] ; then
+  if [ -z $QUIET ]; then echo -e "${Ctxt}                 >>$Cinfo You are up to date with ${Curl}$URL${Cinfo}$Coff"; fi
+  exit 0
+fi
+
+if [ -z $QUIET ]; then echo -e "${Cwarning}    Non-reversible!$Cinfo Do you want to update tools from ${Curl}$URL${Cinfo}?$Coff"; fi
 
 select yn in "Yes" "No"; do
     case $yn in Yes) break ;; No) exit ;; esac
