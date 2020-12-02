@@ -12,14 +12,12 @@ if [[ "$STATUS" == *"behind"* ]] ; then NEED_UPDATE="yes" ; fi
 
 if [[ -z "$NEED_UPDATE" ]] ; then
   if [ -z $QUIET ]; then echo -e "${Ctxt}                 >>$Cinfo You are up to date with ${Curl}$URL${Cinfo}$Coff"; fi
-  cd $ORIGIN_FOLDER
-  exit 0
 fi
 
 if [ -z $QUIET ]; then echo -e "${Cwarning}    Non-reversible!$Cinfo Do you want to update tools from ${Curl}$URL${Cinfo}?$Coff"; fi
 
 select yn in "Yes" "No"; do
-    case $yn in Yes) break ;; No) exit ;; esac
+    case $yn in Yes) break ;; No)   cd $ORIGIN_FOLDER ; exit ;; esac
 done
 
 if [ -z $QUIET ]; then echo -e "${Ctxt}    reset local git$Cinfo ${Ccmd}git reset --hard HEAD$Coff"; fi
