@@ -35,9 +35,9 @@ that tells git not to store temp files and the like. My default `.gitignore` is 
 You can now explore the source structures for the documents and you can build them by
 starting a shell in your document folder and using the command:
 
-* _Linux:_ `bash ./xr/mamdpub.sh`
-* _Mac:_ `zsh ./xr/mamdpub.sh`
-* _Windows:_ `.\xr\mamdpub.bat`
+* _Linux:_ `xr/mdpub.sh`
+* _Mac:_ `zsh xr/mdpub.sh`
+* _Windows:_ `.\xr\mdpub.bat`
 
 ## recommended folder structure
 
