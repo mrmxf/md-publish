@@ -1,5 +1,1 @@
-FILE_GLOB=*/xport-*
-DOC_PREFIX=""
-DOC_TITLE="updated by post processing script"
-DOC_DATE="2020-12-25"
-DOC_COMMENT="r0-draft"
+_HELP="override anything from xr/mdpub-CONFIG at project and/or document level"
