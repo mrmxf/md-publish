@@ -10,27 +10,24 @@ Status: **Work In Progress**
 
 ## installation
 
-Make a folder for your documents project e.g. `/my-document`. Alternativly, you can
-get started with a sample documents project that I use to test all the scripts.
+Make a folder for your documents project e.g. `/my-document`.
 
-```sh
-git clone --depth=1 https://github.com/mrmxf/md-publish-samples
-```
-
-Now `cd` into your project folder e.g. `cd /my-document` or
-`cd ./md-publish-samples` and shallow clone this repo into a subfolder. I
-call the folder `xr` (external resources) so that it's at the bottom
+Now `cd` into your project folder e.g. `cd /my-document`
+and shallow clone this repo into a subfolder.
+I call the folder `xr` (external resources) so that it's at the bottom
 of the folder list and nice and short when typing.
 
 ```sh
 git clone --depth=1 https://github.com/mrmxf/md-publish xr
 ```
 
-## usage
+Now create a blank project by running the script in the `xr` folder (Linux and Mac only for now):
 
-Once you have your document project, you might want to make a file called `.gitignore`
-that tells git not to store temp files and the like. My default `.gitignore` is here:
-`https://github.com/mrmxf/md-publish-samples/blob/master/.gitignore`
+```sh
+xr/mdpub.sh --init
+```
+
+## usage
 
 You can now explore the source structures for the documents and you can build them by
 starting a shell in your document folder and using the command:
@@ -64,12 +61,11 @@ browser as they do in the published document.
 │  │  ├─ boilerplate/            text to be included for different organisations
 │  │  ├─ filter/                 Pandoc filters to modify content in an organisation specific way
 │  │  ├─ refdoc/                 Pandoc reference docs for `.docx` creation
-│  │  ├─ template-tools/         Sample pre & post processing scripts
-│  │  ├─ templates-default/      Pandoc default templates for different formats
-│  │  ├─ templates-default/      Pandoc default templates for different formats
+│  │  ├─ tools/                  All the scripts to make it work
+│  │  ├─ template/               Pandoc default templates for different formats
+│  │  ├─ template-init/          The sample document project that gets clones with mdpub --init
 │  │  ├─ _SETTINGS               environment variables - copy & edit in src folder
-│  │  ├─ mdpub-update-tools.sh   script to update tools from this repo
-│  │  ├─ mdpub.sh                make your documents (Win)
+│  │  ├─ mdpub.bat               make your documents (Win)
 │  │  └─ mdpub.sh                make your documents (Mac & Linux)
 |  └─ .gitignore              prevents you from checking the tools into your document repo
 ```
