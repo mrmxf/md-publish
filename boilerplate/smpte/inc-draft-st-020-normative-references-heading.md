@@ -12,9 +12,9 @@ See AG-16 clause 3.5 (Normative References), AG-16 clause 4.3 (Normative Referen
 The following
 {{smpte.type.long}}
 contains provisions that, through reference in this text, constitute provisions of this standard.
-[Dated references require that the specific edition cited shall be used as the reference.
+[Dated references require that the specific edition cited shall be used as the reference].
 Undated citations refer to the edition of the referenced document (including any amendments) current at the date of publication of this document.
 All
-{{smpte.type.long}}
+{{smpte.type.long}}s
 are subject to revision, and users of this engineering document are encouraged to investigate the possibility of applying the most recent edition of any undated reference.
 :::
