@@ -1,4 +1,10 @@
-# md-publish makedoc script - Linux
+!/usr/bin/bash
+## mdpub main script - make docs or do an option e.g. mdpub --help
+## (C) MrMXF 2020
+##
+## issues https://github.com/mrmxf/md-publish/issues
+##
+## mdpu
 # -------------------------------------------------------------------
 
 # _SETTINGS contains default settings. CONFIG folder is user overrides. create the current date as YYYY-MM-DD for convenience

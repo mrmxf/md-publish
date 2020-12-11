@@ -1,3 +1,10 @@
+## mdpub echo configuration script
+## (C) MrMXF 2020
+##
+## issues https://github.com/mrmxf/md-publish/issues
+##
+##
+#
 # echo the running configuration
 if [ -z $QUIET ] ; then
   echo -e "${Cinfo}          action= $Ccmd$ACTION $1 $2 $3 $4 $5$Coff"

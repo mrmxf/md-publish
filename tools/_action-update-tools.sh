@@ -1,3 +1,9 @@
+## mdpub update tools from github script
+## (C) MrMXF 2020
+##
+## issues https://github.com/mrmxf/md-publish/issues
+##
+##
 # check to see if we need to do an update
 
 URL=$(git config --get remote.origin.url)

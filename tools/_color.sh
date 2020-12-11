@@ -1,3 +1,9 @@
+## mdpub init colors for feedback script
+## (C) MrMXF 2020
+##
+## issues https://github.com/mrmxf/md-publish/issues
+##
+##
 # set up some colors to make the output pretty
 Coff="\e[0m"
  Cblack="\e[30m"  ;  Cred="\e[31m"  ;  Cgreen="\e[32m"  ;  Cyellow="\e[33m"  ;  Cblue="\e[34m"  ;  Cmagenta="\e[35m"  ;  Ccyan="\e[36m"  ;  Cwhite="\e[37m"  ;  Cgray="\e[90m"

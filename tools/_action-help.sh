@@ -1,3 +1,9 @@
+## mdpub help script
+## (C) MrMXF 2020
+##
+## issues https://github.com/mrmxf/md-publish/issues
+##
+##
 # echo help
 echo -e "${Ctxt}Usage:$Coff"
 echo -e "${Ccmd}  ${cmd}$SCRIPT_FOLDER/mdpub.sh${Curl}[OPTIONS] $Ccmd[command]$Coff"

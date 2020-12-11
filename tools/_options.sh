@@ -1,8 +1,12 @@
-# this module parses the input options:
+## mdpub UX options script
+## (C) MrMXF 2020
+##
+## issues https://github.com/mrmxf/md-publish/issues
+##
+##
+# this module parses the input options listed in the case statement below.
+# options can appear anywhere and options with parameters are supported.
 #
-# -q | --quiet   == be quiet during the output
-#
-
 # Params will hold all the positional parameters
 #  e.g. cmd -c --verbose file1 files
 #       -c will set the variable CUBIC to 1
