@@ -6,6 +6,8 @@ e**X**ternal **R**esource (**xr**) that power the Mr MXF md-publish system.
 using the [Pandoc] library. Although [Pandoc] by itself is excellent, there are some
 limitations when you want to make a technical document in web, .docx and .pdf formats.
 
+This document has some markdown tips and tricks at the end.
+
 Status: **Work In Progress**
 
 ## installation
@@ -93,6 +95,31 @@ To build new output documents you will need to install a few bits of open source
 
 A better pre-processing envioroment is being worked on to allow better
 inclusion of source files and references within [Pandoc].
+
+## Tips & Trick for markdown
+
+### Getting extensions to work
+
+In the [Pandoc] documentation, you will find many extensions that allow
+`multiline_tables`, `grid_tables`, `task_lists` amd other parametric ways
+to make visually stunning documents. To enable these, update the `to:`
+field of your defaulta file.
+
+original:
+
+```yaml
+from: markdown
+```
+
+extensions modified:
+
+```yaml
+from: markdown+multiline_tables+task_lists-blank_before_header
+```
+
+* turn _on_: `multiline_tables`
+* turn _on_: `task_lists`
+* turn **off**: `blank_before_header`
 
 [Mr MXF]:https://mrmxf.com
 [Pandoc]:https://pandoc.org
