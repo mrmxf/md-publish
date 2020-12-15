@@ -29,6 +29,13 @@ Now create a blank project by running the script in the `xr` folder (Linux and M
 xr/mdpub.sh --init
 ```
 
+Occasionally update the scripts in the `xr` folder (Linux and Mac only for now) and see if anything is new:
+
+```sh
+xr/mdpub.sh --update
+xr/mdpub.sh --help
+```
+
 ## usage
 
 You can now explore the source structures for the documents and you can build them by
@@ -55,10 +62,11 @@ browser as they do in the published document.
 |  |  ├─ 020-intro.md             2nd markdown file in your document
 |  |  ├─ 030-body.md              3rd markdown file in your document
 |  |  ├─ a00-annex.md             an annex
-|  |  ├─ mdpub-content.yml        pandoc control file - see CONFIG for automation
+|  |  ├─ mdpub-CONFIG             automation overrides for this file
+|  |  └─ xport-document.yml       pandoc defaults file
 │  ├─ src-doc2/               all the sources for doc2
 │  ├─ src-doc3/               all the sources for doc3
-│  ├─ xr/                    the tools from this repo
+│  ├─ xr/                     the tools from this repo
 │  │  ├─ .git/                   git folder (auto-generated) so that you can auto-update the tools
 │  │  ├─ boilerplate/            text to be included for different organisations
 │  │  ├─ filter/                 Pandoc filters to modify content in an organisation specific way
