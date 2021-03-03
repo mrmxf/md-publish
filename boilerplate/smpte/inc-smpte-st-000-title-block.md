@@ -1,5 +1,5 @@
 ::: {custom-style=smpte-eng-doc-top}
-**SMPTE {{smpte.ref}}**
+**SMPTE {{smpte.reference}}**
 :::
 
 ::: {custom-style=smpte-eng-doc-type}
