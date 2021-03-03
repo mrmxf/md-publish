@@ -100,7 +100,7 @@ See AG-16 clause 3.1 (Title Page), and ISO Directive Part 2 clause 11 (Title).
 Proposed SMPTE Standard
 
 This document is subject to change
-Copyright (C) 2020 SMPTE
+Copyright (C) {{smpte.year}} SMPTE
 All rights reserved
 :::
 
