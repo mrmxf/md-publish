@@ -43,7 +43,7 @@ do
 
   # if there is a document config the use it
   if [ -f $DOC_CONFIG_PATH ] ; then
-    echo -e "${Cwarning}------------------->${Ctxt}zmp-CONFIG=$Cfile$DOC_CONFIG_PATH$Coff"
+    echo -e "${Cwarning}------------------->${Ctxt}  zmp-CONFIG=$Cfile$DOC_CONFIG_PATH$Coff"
     source $DOC_CONFIG_PATH
   fi
 

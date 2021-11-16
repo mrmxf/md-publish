@@ -8,19 +8,19 @@
 
 metadata:
   mustache:
-    - src/metadata/readme.json
+    - myDocument01/metadata/readme.json
 
 from: markdown
 to: docx
 
 reference-doc: xr/refdoc/refdoc-pandoc-mdpub.docx
 
-output-file:  docs/mdpub-readme.docx
+output-file:  _published/zmp-readme.docx
 input-files:
-  - src/readme.md
+  - myDocument01/readme.md
 
   # paths to search for images
-resource-path: [".", "src", "xr/boilerplate/smpte"]
+resource-path: [".", "myDocument01", "xr/boilerplate/smpte"]
 
 # filters are needed for this document
 # - pandoc-lustache    - substitutes metadata into {{mustaches}}
