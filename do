@@ -1,2 +1,2 @@
-SCRIPT_FOLDER="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 ; pwd )"
-source $SCRIPT_FOLDER/mdpub.sh
+#echo source "$( dirname "${BASH_SOURCE[0]}")/mdpub.sh"
+source "$( dirname "${BASH_SOURCE[0]}")/mdpub.sh"
