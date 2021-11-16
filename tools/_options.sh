@@ -27,6 +27,10 @@ while [ $# -gt 0 ] ; do
       ACTION="init"
       shift
       ;;
+    -p|--panstall|panstall)
+      ACTION="panstall"
+      shift
+      ;;
     -q|--quiet)
       QUIET="quiet"
       shift

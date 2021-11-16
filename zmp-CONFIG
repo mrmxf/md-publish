@@ -1,4 +1,4 @@
-_help=_SETTINGS creates environemnt variables. Copy to mdpub-CONFIG in the project root or document root to override
+_help=_SETTINGS creates environemnt variables. Copy to zmp-CONFIG in the project root or document root to override
 MDPUB_VERBOSE=TURE
 MDPUB_TITLE=md-publish by Mr MXF
 MDPUB_SCRIPT_VERSION=0.4.2

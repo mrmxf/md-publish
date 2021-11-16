@@ -1,39 +1,40 @@
-# md-publish
+# zmp - Zimple Markup/down Publishing
 
-e**X**ternal **R**esource (**xr**) that power the Mr MXF md-publish system.
+**z**imple **m**arkdown **p**ublishing - Make html & docx & pdf from md & rst
 
-**md-publish** is a set of tools for Windwows, Mac & Linux for publishing documents
-using the [Pandoc] library. Although [Pandoc] by itself is excellent, there are some
-limitations when you want to make a technical document in web, .docx and .pdf formats.
+**md-publish** is a set of tools for Linux for publishing documents
+using the [Pandoc] library and other tools. This readme covers installation
+for Linux Command Line & web server. The full documentation is pending.
 
-This document has some markdown tips and tricks at the end.
-
-Status: **Work In Progress**
+* Status: **Work In Progress**
+* Release: **v0.2.x**
+* Stable: [**v0.1.0**](https://github.com/mrmxf/md-publish/tree/v0.1.0)
 
 ## installation
 
-Make a folder for your documents project e.g. `/my-document`.
-
-Now `cd` into your project folder e.g. `cd /my-document`
-and shallow clone this repo into a subfolder.
-I call the folder `xr` (external resources) so that it's at the bottom
-of the folder list and nice and short when typing.
+Make a git for your documents project e.g. `myWorks` & clone it.
 
 ```sh
-git clone --depth=1 https://github.com/mrmxf/md-publish xr
+git clone https://github.com/myName/myWorks
 ```
 
-Now create a blank project by running the script in the `xr` folder (Linux and Mac only for now):
+now add this repo as a subtree in the folder `zmp`.
 
 ```sh
-xr/mdpub.sh --init
+git subtree add --prefix=zmp --squash https://github.com/mrmxf/md-publish
+```
+
+Now initialise some folders and configs by running the main script:
+
+```sh
+zmp/do --init
 ```
 
 Occasionally update the scripts in the `xr` folder (Linux and Mac only for now) and see if anything is new:
 
 ```sh
-xr/mdpub.sh --update
-xr/mdpub.sh --help
+zmp/do --update
+zmp/do --help
 ```
 
 ## usage
@@ -41,9 +42,17 @@ xr/mdpub.sh --help
 You can now explore the source structures for the documents and you can build them by
 starting a shell in your document folder and using the command:
 
-* _Linux:_ `xr/mdpub.sh`
-* _Mac:_ `zsh xr/mdpub.sh`
-* _Windows:_ `.\xr\mdpub.bat`
+* _Linux:_ `zmp/do`
+
+## notes
+
+The linux scripts `do` and `mdpub.sh` perform the same actions. `mdpub.sh` is deprecated.
+
+The `do` and `mdpub.sh` scripts are checked in with `+x` attributes using:
+
+```sh
+git update-index --chmod=+x do
+```
 
 ## recommended folder structure
 
@@ -52,32 +61,32 @@ The numbers in the filenames help force the source documents to appear in the sa
 browser as they do in the published document.
 
 ```text
-├─ my-document-folder         document folder - contains coy of all files
-│  ├─ docs/                   default output folder for the documents
-│  ├─ src/                    all the sources for doc1
+├─ myWorks                projects folder - the git project root
+│  ├─ docs/                   default publishing output folder for the projects
+│  ├─ poetry/                 all the sources for the poetry project
 │  │  ├─ metadata/
-|  |  |  └─ doc-properties.json      metadata for the document
-│  │  ├─ tool/                    folder for pre & post processing
+|  |  |  └─ poetry-props.json     metadata for the document
+│  │  ├─ tool/                    folder for poetry specific pre & post processing
 |  |  ├─ 010-scope.md             1st markdown file in your document
 |  |  ├─ 020-intro.md             2nd markdown file in your document
 |  |  ├─ 030-body.md              3rd markdown file in your document
 |  |  ├─ a00-annex.md             an annex
-|  |  ├─ mdpub-CONFIG             automation overrides for this file
-|  |  └─ xport-document.yml       pandoc defaults file
-│  ├─ src-doc2/               all the sources for doc2
-│  ├─ src-doc3/               all the sources for doc3
-│  ├─ xr/                     the tools from this repo
+|  |  ├─ zmp-CONFIG               automation overrides for poetry
+|  |  └─ zmp-poetry.yml           pandoc defaults file for poetry
+│  ├─ prose/                  all the sources for the prose project
+│  ├─ song/                   all the sources for the song project
+│  ├─ zmp/                    the smp tooling folder
 │  │  ├─ .git/                   git folder (auto-generated) so that you can auto-update the tools
 │  │  ├─ boilerplate/            text to be included for different organisations
 │  │  ├─ filter/                 Pandoc filters to modify content in an organisation specific way
+│  │  ├─ preproc/                Pandoc preprocessor tools
 │  │  ├─ refdoc/                 Pandoc reference docs for `.docx` creation
-│  │  ├─ tools/                  All the scripts to make it work
+│  │  ├─ do-tools/               All the tools run by `do`
 │  │  ├─ template/               Pandoc default templates for different formats
 │  │  ├─ template-init/          The sample document project that gets clones with mdpub --init
 │  │  ├─ _SETTINGS               environment variables - copy & edit in src folder
-│  │  ├─ mdpub.bat               make your documents (Win)
-│  │  └─ mdpub.sh                make your documents (Mac & Linux)
-|  └─ .gitignore              prevents you from checking the tools into your document repo
+│  │  └─ do                      the command that makes your documents
+|  └─ .gitignore              controls what you check into your document repo
 ```
 
 ## Background
