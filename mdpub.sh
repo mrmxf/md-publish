@@ -9,63 +9,76 @@
 
 # _SETTINGS contains default settings. CONFIG folder is user overrides. create the current date as YYYY-MM-DD for convenience
 printf -v MDPUB_DATE '%(%Y-%m-%d)T' -1
-SCRIPT_FOLDER="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 ; pwd )"
-TOOLS=$SCRIPT_FOLDER/tools
-CONFIG_FILENAME=zmp-CONFIG
-CONFIG_PROJECT="$( pwd )/$CONFIG_FILENAME"
-MDPUB_TITLE="md-publish by mrmxf"
+ZMPFolder="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 ; pwd )"
+ZMPTools=$ZMPFolder/tools
+ZMPConfigFile=zmp-CONFIG
+ZMPProjectConfigFile="$( pwd )/$ZMPConfigFile"
+ZMPTitle="zmp by mrmxf"
+ZMPVersion="0.5.0"
 
 # pull in the color highlighting & process command line options
-source $TOOLS/_color.sh
-source $TOOLS/_options.sh
+source $ZMPTools/_color.sh
+source $ZMPTools/_options.sh
+
+ZA02="${Cwarning}-->${Ctxt}"
+ZA18="${Cwarning}------------------>${Ctxt}"
+ZE02="${Cerror}-->"
 
 #pull in the default settings & optional config
-source $SCRIPT_FOLDER/$CONFIG_FILENAME >/dev/null 2>&1
-source $CONFIG_PROJECT >/dev/null 2>&1
+source $ZMPFolder/$ZMPConfigFile >/dev/null 2>&1
+source $ZMPProjectConfigFile >/dev/null 2>&1
 
-source $TOOLS/_action-echo-configuration.sh
+source $ZMPTools/_action-echo-configuration.sh
 
 # handle any actions
-if [ "$ACTION" == "help"   ] ;  then source $TOOLS/_action-help.sh ; fi
-if [ "$ACTION" == "init"   ] ;  then source $TOOLS/_action-init-project.sh ; fi
-if [ "$ACTION" == "update" ] ;  then source $TOOLS/_action-update-tools.sh ; fi
+if [ "$ACTION" == "help"   ] ;  then source $ZMPTools/_action-help.sh ; fi
+if [ "$ACTION" == "init"   ] ;  then source $ZMPTools/_action-init-project.sh ; fi
+if [ "$ACTION" == "update" ] ;  then source $ZMPTools/_action-update-ZMPTools.sh ; fi
 
 # iterate over all yml files in the root folder and run pandoc
-for f in $FILE_GLOB
+for f in $ZMPGlob
 do
   # reset the project config in case there is no config for this doc
-  source $CONFIG_PROJECT >/dev/null 2>&1
+  source $ZMPProjectConfigFile >/dev/null 2>&1
   # locate the project cofig
-  DOC_FOLDER=$( dirname $f )
-  DOC_CONFIG_PATH="$DOC_FOLDER/$CONFIG_FILENAME"
+  ZMPDocPath=$( dirname $f )
+  DOC_CONFIG_PATH="$ZMPDocPath/$ZMPConfigFile"
 
-  echo -e "${Cwarning}------------------->${Ctxt}    defaults=$Cfile$f$Coff"
+  echo -e "$ZA18    defaults=$Cfile$f$Coff"
 
   # if there is a document config the use it
   if [ -f $DOC_CONFIG_PATH ] ; then
-    echo -e "${Cwarning}------------------->${Ctxt}  zmp-CONFIG=$Cfile$DOC_CONFIG_PATH$Coff"
+    echo -e "$ZA18  zmp-CONFIG=$Cfile$DOC_CONFIG_PATH$Coff"
     source $DOC_CONFIG_PATH
   fi
 
-  RUN_SCRIPT="$DOC_FOLDER/$PRE_PROCESS_SCRIPT"
-  # if there is a pre-process script then run it
-  if [ -f $RUN_SCRIPT ] ; then
-    EKO="${Cwarning}-->${Ctxt} pre-process${Cinfo}"
-    ERO="${Cerror}--> pre-process ERROR${Cinfo}"
-    echo -e "$EKO=$Cfile$RUN_SCRIPT$Coff"
-    source $RUN_SCRIPT
+  # if there is a zmp-init script then run it
+  EKO="$ZA02 zmp-init${Cwarning}>${Cinfo}"
+  ZMPScriptPath="$ZMPDocPath/$ZMPDocInit"
+  if [ -f $ZMPScriptPath ] ; then
+    ERO="$ZE02 zmp-init ERROR${Cinfo}"
+    echo -e "$EKO script: $Cfile$ZMPScriptPath$Coff"
+    source $ZMPScriptPath
+  else
+    echo -e "$EKO=$Cfile$ZMPScriptPath$Cwarning not found$Coff"
   fi
 
-  echo -e "${Cwarning}-->${Ctxt}pandoc$Coff"
-  pandoc --defaults=$f
+  ZMPCmd="pandoc --defaults=$f"
+  echo -e "$ZA02$Ccmd $ZMPCmd $Coff"
+  # use process substitution to read pandoc output into a string array
+  readarray -t arrayOfStdOut < <(pandoc --defaults=$f 2>&1)
+  #Print pandoc output line by line
+  for LL in "${arrayOfStdOut[@]}"; do echo -e "   $ZA02$Cinfo $LL" ; done
 
-  RUN_SCRIPT="$DOC_FOLDER/$POST_PROCESS_SCRIPT"
-  # if there is a post-process script then run it
-  if [ -f $RUN_SCRIPT ] ; then
-    EKO="${Cwarning}-->${Ctxt} post-process${Cinfo}"
-    ERO="${Cerror}--> post-process ERROR${Cinfo}"
-    echo -e "$EKO=$Cfile$RUN_SCRIPT$Coff"
-    source $RUN_SCRIPT
+  # if there is a zmp-post script then run it
+  ZMPScriptPath="$ZMPDocPath/$ZMPDocPost"
+  EKO="$ZA02 zmp-post${Cwarning}>${Cinfo}"
+  if [ -f $ZMPScriptPath ] ; then
+    ERO="$ZE02 zmp-post ERROR${Cinfo}"
+    echo -e "$EKO script: $Cfile$ZMPScriptPath$Coff"
+    source $ZMPScriptPath
+  else
+    echo -e "$EKO=$Cfile$ZMPScriptPath$Cwarning not found$Coff"
   fi
 done
 
