@@ -10,45 +10,47 @@ for Linux Command Line & web server. The full documentation is pending.
 * Release: **v0.2.x**
 * Stable: [**v0.1.0**](https://github.com/mrmxf/md-publish/tree/v0.1.0)
 
-## installation
+## installation on Linux, a Mac or a Virtual Machine
 
-Make a git for your documents project e.g. `myWorks` & clone it.
-
-```sh
-git clone https://github.com/myName/myWorks
-```
-
-now add this repo as a subtree in the folder `zmp`.
+Make a git repo for your documents project e.g. `myOpusMagnus`, clone it and
+`cd` into that folder.
 
 ```sh
-git subtree add --prefix=zmp --squash https://github.com/mrmxf/md-publish
+git clone https://github.com/myName/myOpusMagnus
+cd myOpusMagnus
 ```
 
-Now initialise some folders and configs by running the main script:
+now add this repo as a submodule in the folder `zmp`.
+
+```sh
+git submodule add https://github.com/mrmxf/md-publish zmp
+```
+
+Now initialise some folders, `.gitignore` and configs by running the main script:
 
 ```sh
 zmp/do --init
 ```
 
-Occasionally update the scripts in the `xr` folder (Linux and Mac only for now) and see if anything is new:
+Occasionally update the scripts in the `zmp` folder using git or using zmp itself.
 
 ```sh
 zmp/do --update
 zmp/do --help
 ```
 
-## usage
+## Usage
 
-You can now explore the source structures for the documents and you can build them by
-starting a shell in your document folder and using the command:
+You can now explore the source structures for the documents and you can build
+them by starting a shell in your document folder and using the command:
 
 * _Linux:_ `zmp/do`
 
-## notes
+## Notes
 
-The linux scripts `do` and `mdpub.sh` perform the same actions. `mdpub.sh` is deprecated.
-
-The `do` and `mdpub.sh` scripts are checked in with `+x` attributes using:
+The linux scripts `do` and `mdpub.sh` perform the same actions. `mdpub.sh`
+is deprecated. The `do` and `mdpub.sh` scripts are checked in with `+x`
+attributes using:
 
 ```sh
 git update-index --chmod=+x do
@@ -56,17 +58,18 @@ git update-index --chmod=+x do
 
 ## recommended folder structure
 
-The folder structure below works quite well and helps to locate content in long complicated documents.
-The numbers in the filenames help force the source documents to appear in the same order in a file
-browser as they do in the published document.
+The folder structure below works quite well and helps to locate content in long
+complicated documents. The numbers in the filenames help force the source
+documents to appear in the same order in a file browser as they do in the
+published document.
 
 ```text
-├─ myWorks                projects folder - the git project root
+├─ myOpusMagnus                projects folder - the git project root
 │  ├─ docs/                   default publishing output folder for the projects
 │  ├─ poetry/                 all the sources for the poetry project
 │  │  ├─ metadata/
 |  |  |  └─ poetry-props.json     metadata for the document
-│  │  ├─ tool/                    folder for poetry specific pre & post processing
+│  │  ├─ tools/                    folder for poetry specific processing scripts
 |  |  ├─ 010-scope.md             1st markdown file in your document
 |  |  ├─ 020-intro.md             2nd markdown file in your document
 |  |  ├─ 030-body.md              3rd markdown file in your document
@@ -76,15 +79,15 @@ browser as they do in the published document.
 │  ├─ prose/                  all the sources for the prose project
 │  ├─ song/                   all the sources for the song project
 │  ├─ zmp/                    the smp tooling folder
-│  │  ├─ .git/                   git folder (auto-generated) so that you can auto-update the tools
+│  │  ├─ .git/                   git folder (auto-generated)
 │  │  ├─ boilerplate/            text to be included for different organisations
-│  │  ├─ filter/                 Pandoc filters to modify content in an organisation specific way
+│  │  ├─ filter/                 Pandoc filters to modify content
 │  │  ├─ preproc/                Pandoc preprocessor tools
 │  │  ├─ refdoc/                 Pandoc reference docs for `.docx` creation
 │  │  ├─ do-tools/               All the tools run by `do`
 │  │  ├─ template/               Pandoc default templates for different formats
-│  │  ├─ template-init/          The sample document project that gets clones with mdpub --init
-│  │  ├─ _SETTINGS               environment variables - copy & edit in src folder
+│  │  ├─ template-init/          The sample document projectfor zmp/do --init
+│  │  ├─ zmp-CONFIG              environment variables - copy then edit
 │  │  └─ do                      the command that makes your documents
 |  └─ .gitignore              controls what you check into your document repo
 ```
@@ -103,11 +106,15 @@ boilerplate and tools are custom for the organisations in which I work.
 
 ### Build requirements
 
-To build new output documents you will need to install a few bits of open source softwrae:
+To build new output documents you will need to install a few bits of open
+source softwrae:
 
-* [Pandoc] is the core engine for building asll the outputs. It is a command line application. Fire up a terminal (Win/Mac/Linux) and type `pandoc --version` to see if you have it installed.
+* [Pandoc] is the core engine for building asll the outputs. It is a command
+  line application. Fire up a terminal (Win/Mac/Linux) and type
+   `pandoc --version` to see if you have it installed.
 * One of the following for making PDF output:
-  * [Protext] is needed for generating a Latex intermediate for creating PDFs on Windows
+  * [Protext] is needed for generating a Latex intermediate for creating PDFs
+     on Windows
   * [Mactex] is needed for making PDFs on a Mac
 
 A better pre-processing envioroment is being worked on to allow better
