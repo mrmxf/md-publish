@@ -1,6 +1,6 @@
-!/usr/bin/bash
+#!/usr/bin/bash
 ## mdpub main script - make docs or do an option e.g. mdpub --help
-## (C) MrMXF 2020
+## (C) MrMXF 2021
 ##
 ## issues https://github.com/mrmxf/md-publish/issues
 ##
@@ -34,6 +34,7 @@ source $ZMPTools/_action-echo-configuration.sh
 if [ "$ACTION" == "help"   ] ;  then source $ZMPTools/_action-help.sh ; fi
 if [ "$ACTION" == "init"   ] ;  then source $ZMPTools/_action-init-project.sh ; fi
 if [ "$ACTION" == "update" ] ;  then source $ZMPTools/_action-update-ZMPTools.sh ; fi
+if [ "$ACTION" == "panstall" ] ;  then source $ZMPTools/_pandoc-install.sh ; fi
 
 # iterate over all yml files in the root folder and run pandoc
 for f in $ZMPGlob
