@@ -24,6 +24,8 @@ now add this repo as a submodule in the folder `zmp`.
 
 ```sh
 git submodule add https://github.com/mrmxf/md-publish zmp
+# ONLY if you're using a zmp branch e.g, one called DEV5
+# git checkout DEV5
 ```
 
 Now initialise some folders, `.gitignore` and configs by running the main script:
